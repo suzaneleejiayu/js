@@ -25,6 +25,7 @@ class justin extends Phaser.Scene {
 
 // Check for spacebar or any key here
 var spaceDown = this.input.keyboard.addKey("SPACE");
+var key3 = this.input.keyboard.addKey(51);
 
 // On spacebar event, call the world scene
 
@@ -43,11 +44,27 @@ spaceDown.on(
     this
 );
 
+key3.on(
+  "down",
+  function () {
+    console.log("Jump to justin scene");
+
+    this.scene.start("menu")
+    },
+    this
+);
+
 // Add any text in the main page
 this.add.text(55, 455, "PRESS SPACEBAR TO CONTINUE", {
   font: "14px Poppins Medium",
   fill: "#804000",
 });
+
+this.add.text(83, 520, "press '3' to skip the intro", {
+  font: "13px Poppins Medium",
+  fill: "#000000",
+});
+
    }
 
 update() {
