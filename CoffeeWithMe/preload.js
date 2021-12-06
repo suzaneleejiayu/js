@@ -11,25 +11,34 @@ class preload extends Phaser.Scene {
     // Preload all the assets here
     this.load.image("intro", "assets/intro.png");
 
+    this.load.audio("spaceS", "assets/spaceS.mp3");
+    this.load.audio("enterS", "assets/enterS.mp3");
+    this.load.audio("collectS", "assets/collectS.mp3");
+    this.load.audio("finishS", "assets/finishS.wav");
+    this.load.audio("gameOverS", "assets/gameOverS.wav");
+    this.load.audio("bgS", "assets/bgS.mp3");
+
   }
 
   create() {
     console.log("*** preload scene");
+
+    this.spaceSnd = this.sound.add("spaceS");
+    this.enterSnd = this.sound.add("enterS");
 
     window.iceTarget = Phaser.Math.Between(1, 3);
     window.beanTarget = Phaser.Math.Between(1, 3);
     window.cinnamonTarget = Phaser.Math.Between(1, 3);
     window.milkTarget = Phaser.Math.Between(1, 3);
 
-    // Add any text in the main page
-
-
     // Add any sound and music here
-    // ( 0 = mute to 1 is loudest )
-    //this.music = this.sound.add('bgMusic').setVolume(0.3) // 10% volume
+    this.music = this.sound
+      .add("bgS",{
+        loop:true,
+      })
+      .setVolume(0.2)
 
-    //this.music.play()
-    //window.music = this.music
+    this.music.play()
 
     // Add image and detect spacebar keypress
     this.add.image(0, 0, 'intro').setOrigin(0, 0);
@@ -64,6 +73,8 @@ class preload extends Phaser.Scene {
       function () {
         console.log("Jump to justin scene");
 
+        this.spaceSnd.play();
+
         let playerPos = {};
         playerPos.x = 337;
         playerPos.y = 916;
@@ -78,6 +89,8 @@ class preload extends Phaser.Scene {
       "down",
       function () {
         console.log("Jump to justin scene");
+
+        this.enterSnd.play();
 
         this.scene.start("menu")
         },

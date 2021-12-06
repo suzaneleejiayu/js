@@ -16,6 +16,8 @@ class menu extends Phaser.Scene {
   create() {
     console.log("*** preload scene");
 
+    this.spaceSnd = this.sound.add("spaceS");
+
     window.iceTarget = Phaser.Math.Between(1, 3);
     window.beanTarget = Phaser.Math.Between(1, 3);
     window.cinnamonTarget = Phaser.Math.Between(1, 3);
@@ -62,6 +64,8 @@ class menu extends Phaser.Scene {
       "down",
       function () {
         console.log("Jump to world scene");
+
+        this.spaceSnd.play();
 
         let playerPos = {};
         playerPos.x = 337;

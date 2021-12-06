@@ -16,6 +16,8 @@ class finishPage extends Phaser.Scene {
   create() {
     console.log('finishPage');
 
+    this.enterSnd = this.sound.add("enterS");
+
     this.add.image(0, 0, 'finishPage').setOrigin(0, 0);
 
     window.ice = 0
@@ -32,6 +34,8 @@ spaceDown.on(
   "down",
   function () {
     console.log("Jump to menu scene");
+
+    this.enterSnd.play();
 
     let playerPos = {};
     playerPos.x = 337;

@@ -23,6 +23,9 @@ class room2 extends Phaser.Scene {
     create() {
         console.log('*** room2 scene');
 
+        //audio
+        this.collectSnd = this.sound.add("collectS");
+
         let map = this.make.tilemap({key:"room2"});
 
        // Step 4 Load the game tiles
@@ -148,6 +151,8 @@ class room2 extends Phaser.Scene {
     }/////////////////// end of update //////////////////////////////
 
     removeCinnamon(player, tile) {
+
+      this.collectSnd.play();
       this.collectLayer.removeTileAt(tile.x, tile.y); // remove the item
 
       window.cinnamon++
@@ -157,6 +162,8 @@ class room2 extends Phaser.Scene {
     }
   
     removeBean(player, tile) {
+
+      this.collectSnd.play();
       this.collectLayer.removeTileAt(tile.x, tile.y); // remove the item
 
       window.bean++

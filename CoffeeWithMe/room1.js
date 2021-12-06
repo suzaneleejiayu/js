@@ -18,10 +18,15 @@ class room1 extends Phaser.Scene {
         // Step 2 : Preload any images here, nickname, filename
         this.load.image("milk", "assets/milkTS.png");
         this.load.image("wall", "assets/wallTS.png");
+        
     }
 
     create() {
         console.log('*** room1 scene');
+
+        //audio
+        this.collectSnd = this.sound.add("collectS");
+        this.gameOverSnd = this.sound.add("gameOverS");
 
         let map = this.make.tilemap({key:"room1"});
 
@@ -149,6 +154,8 @@ class room1 extends Phaser.Scene {
     } /////////////////// end of update //////////////////////////////
 
     removeGoodIce(player, tile){
+
+      this.collectSnd.play();
       this.itemLayer.removeTileAt(tile.x, tile.y); // remove the item
 
       window.ice++
@@ -158,9 +165,11 @@ class room1 extends Phaser.Scene {
     }
 
     removeBadIce(player, tile) {
+
       console.log("remove badIce", tile.index);
       this.itemLayer.removeTileAt(tile.x, tile.y); // remove the item
       this.scene.start("gameOver");
+      this.gameOverSnd.play();
     }
 
     // Function to jump to room1

@@ -77,6 +77,8 @@ class world extends Phaser.Scene {
       reapet:-1
     })
 
+    this.finishSnd = this.sound.add("finishS");
+
     //Step 3 - Create the map from main
     let map = this.make.tilemap({key:"world"});
 
@@ -233,6 +235,7 @@ class world extends Phaser.Scene {
         window.milk >= window.milkTarget
       ) {
         this.ending()
+        this.finishSnd.play();
       }
 
     }

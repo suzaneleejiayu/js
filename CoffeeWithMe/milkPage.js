@@ -16,6 +16,9 @@ class milkPage extends Phaser.Scene {
   create() {
     console.log('milkPage');
 
+    this.spaceSnd = this.sound.add("spaceS");
+    this.enterSnd = this.sound.add("enterS");
+
     this.add.image(0, 0, 'milkPage').setOrigin(0, 0);
 
     window.ice = 0
@@ -34,6 +37,8 @@ spaceDown.on(
   function () {
     console.log("Jump to finishPage scene");
 
+    this.spaceSnd.play();
+
     let playerPos = {};
     playerPos.x = 337;
     playerPos.y = 916;
@@ -48,6 +53,8 @@ key3.on(
   "down",
   function () {
     console.log("Jump to justin scene");
+
+    this.enterSnd.play();
 
     this.scene.start("menu")
     },

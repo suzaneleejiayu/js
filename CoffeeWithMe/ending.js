@@ -20,6 +20,8 @@ class ending extends Phaser.Scene {
     create() {
         console.log('ending');
 
+        this.spaceSnd = this.sound.add("spaceS");
+
         this.add.image(0, 0, 'congrat').setOrigin(0, 0);
 
         window.ice = 0
@@ -35,14 +37,16 @@ class ending extends Phaser.Scene {
     spaceDown.on(
       "down",
       function () {
-        console.log("Jump to preload scene");
+        console.log("Jump to menu scene");
+
+        this.spaceSnd.play();
 
         let playerPos = {};
         playerPos.x = 337;
         playerPos.y = 916;
         playerPos.dir = "up";
 
-        this.scene.start("preload", { playerPos: playerPos })
+        this.scene.start("menu", { playerPos: playerPos })
         },
         this
     );

@@ -20,6 +20,8 @@ class gameOver extends Phaser.Scene {
     create() {
         console.log('gameOver');
 
+        this.spaceSnd = this.sound.add("spaceS");
+
         this.add.image(0, 0, 'over').setOrigin(0, 0);
 
         window.ice = 0
@@ -34,14 +36,16 @@ class gameOver extends Phaser.Scene {
     spaceDown.on(
       "down",
       function () {
-        console.log("Jump to preload scene");
+        console.log("Jump to world scene");
+
+        this.spaceSnd.play();
 
         let playerPos = {};
         playerPos.x = 337;
         playerPos.y = 916;
         playerPos.dir = "up";
 
-        this.scene.start("preload", { playerPos: playerPos })
+        this.scene.start("world", { playerPos: playerPos })
         },
         this
     );

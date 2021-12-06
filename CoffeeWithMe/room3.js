@@ -24,6 +24,10 @@ class room3 extends Phaser.Scene {
     create() {
         console.log('*** room3 scene');
 
+        //audio
+        this.collectSnd = this.sound.add("collectS");
+        this.gameOverSnd = this.sound.add("gameOverS");
+
         let map = this.make.tilemap({key:"room3"});
 
        // Step 4 Load the game tiles
@@ -152,6 +156,8 @@ class room3 extends Phaser.Scene {
     }/////////////////// end of update //////////////////////////////
 
     removeGoodMilk(player, tile) {
+
+      this.collectSnd.play();
       this.bottleLayer.removeTileAt(tile.x, tile.y); // remove the item
 
       window.milk++
@@ -164,6 +170,7 @@ class room3 extends Phaser.Scene {
       console.log("remove badmilk", tile.index);
       this.bottleLayer.removeTileAt(tile.x, tile.y); // remove the item
       this.scene.start("gameOver");
+      this.gameOverSnd.play();
     }
 
     // Function to jumo to room1
