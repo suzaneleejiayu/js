@@ -6,7 +6,6 @@ class room1 extends Phaser.Scene {
         // Put global variable here
     }
 
-
     init(data) {
         this.playerPos = data.playerPos
     }
@@ -38,38 +37,36 @@ class room1 extends Phaser.Scene {
 
         let tileArray = [wallTiles,milkTiles]
 
-    // Step 5  Load in layers by layers
-    this.bgLayer = map.createLayer(
+        // Step 5  Load in layers by layers
+        this.bgLayer = map.createLayer(
         "bgLayer",
         tileArray,
         0,
         0
       );
 
-      this.wallLayer = map.createLayer(
+        this.wallLayer = map.createLayer(
         "wallLayer",
         tileArray,
         0,
         0
       );
 
-      this.furnitureLayer = map.createLayer(
+        this.furnitureLayer = map.createLayer(
         "furnitureLayer",
         tileArray,
         0,
         0
       );
 
-      this.itemLayer = map.createLayer(
+        this.itemLayer = map.createLayer(
         "itemLayer",
         tileArray,
         0,
         0
       );
 
-      // this.playerwill collide with the level tiles
-      // this.player=this.physics.add.sprite(488,910,"barista-front");
-      this.player = this.physics.add.sprite(
+        this.player = this.physics.add.sprite(
 
         this.playerPos.x,
   
@@ -79,15 +76,15 @@ class room1 extends Phaser.Scene {
   
       ).setSize(20,30)
 
-      window.player = this.player;
-      this.timedEvent = this.time.addEvent({
+        window.player = this.player;
+        this.timedEvent = this.time.addEvent({
         delay: 1000,
         callback: this.delayOneSec,
         callbackScope: this,
         loop: false,
         
   
-      });
+        });
 
       // setTileIndexCallback
       this.itemLayer.setTileIndexCallback(1065, this.removeGoodIce, this);
@@ -105,10 +102,10 @@ class room1 extends Phaser.Scene {
       this.physics.world.bounds.height = this.bgLayer.height;
       this.player.setCollideWorldBounds(true); // don't go out of the this.map
 
-      // // create the arrow keys
+      // create the arrow keys
        this.cursors = this.input.keyboard.createCursorKeys();
   
-      // // camera follow player
+      // camera follow player
       this.cameras.main.startFollow(this.player);
 
       this.bgLayer.setCollisionByExclusion(-1, true)

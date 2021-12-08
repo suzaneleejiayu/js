@@ -43,26 +43,6 @@ class preload extends Phaser.Scene {
     // Add image and detect spacebar keypress
     this.add.image(0, 0, 'intro').setOrigin(0, 0);
 
-    // this.add.text(10, 10, "ICE TARGET: " + window.iceTarget, {
-    //   font: "12px Poppins Medium",
-    //   fill: "#fff5e6",
-    // });
-
-    // this.add.text(10, 30, "BEAN TARGET: " + window.beanTarget, {
-    //   font: "12px Poppins Medium",
-    //   fill: "#fff5e6",
-    // });
-
-    // this.add.text(10, 50, "CINAMON TARGET " + window.cinnamonTarget, {
-    //   font: "12px Poppins Medium",
-    //   fill: "#fff5e6",
-    // });
-
-    // this.add.text(10, 70, "MILK TARGET " + window.milkTarget, {
-    //   font: "12px Poppins Medium",
-    //   fill: "#fff5e6",
-    // });
-
     // Check for spacebar or any key here
     var spaceDown = this.input.keyboard.addKey("SPACE");
     var key3 = this.input.keyboard.addKey(51);
@@ -107,7 +87,5 @@ class preload extends Phaser.Scene {
       font: "13px Poppins Medium",
       fill: "#000000",
     });
-
-    // Create all the game animations here
   }
 }

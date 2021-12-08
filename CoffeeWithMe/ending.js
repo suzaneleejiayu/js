@@ -6,7 +6,6 @@ class ending extends Phaser.Scene {
         // Put global variable here
     }
 
-
     init(data) {
       this.playerPos = data.playerPos
   }

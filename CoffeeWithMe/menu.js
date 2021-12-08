@@ -23,17 +23,7 @@ class menu extends Phaser.Scene {
     window.cinnamonTarget = Phaser.Math.Between(1, 3);
     window.milkTarget = Phaser.Math.Between(1, 3);
 
-    // Add any text in the main page
-
-
-    // Add any sound and music here
-    // ( 0 = mute to 1 is loudest )
-    //this.music = this.sound.add('bgMusic').setVolume(0.3) // 10% volume
-
-    //this.music.play()
-    //window.music = this.music
-
-    // Add image and detect spacebar keypress
+    // Add image and text
     this.add.image(0, 0, 'menu').setOrigin(0, 0);
 
     this.add.text(110, 280, "ICE TARGET: " + window.iceTarget, {

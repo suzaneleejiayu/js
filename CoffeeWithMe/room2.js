@@ -6,7 +6,6 @@ class room2 extends Phaser.Scene {
         // Put global variable here
     }
 
-
     init(data) {
        this.playerPos = data.playerPos
     }
@@ -102,10 +101,10 @@ class room2 extends Phaser.Scene {
       this.physics.world.bounds.height = this.bgLayer.height;
       this.player.setCollideWorldBounds(true); // don't go out of the this.map
   
-      // // create the arrow keys
+      // create the arrow keys
        this.cursors = this.input.keyboard.createCursorKeys();
   
-      // // camera follow player
+      // camera follow player
       this.cameras.main.startFollow(this.player);
 
       this.itemLayer.setCollisionByExclusion(-1, true)
@@ -182,6 +181,5 @@ class room2 extends Phaser.Scene {
       
       this.scene.start("world", { playerPos: playerPos });
     }
-
 
 }

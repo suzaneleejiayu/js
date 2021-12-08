@@ -17,6 +17,8 @@ class world extends Phaser.Scene {
     this.load.atlas("barista-right","assets/barista-right.png","assets/barista-right.json");
     this.load.atlas("up","assets/barista-back.png","assets/barista-back.json");
 
+    this.load.atlas("cow","assets/cow.png","assets/cow.json");
+
     this.load.tilemapTiledJSON("world","assets/myTileMap.json");
 
     // Step 2 : Preload any images here, nickname, filename
@@ -36,7 +38,7 @@ class world extends Phaser.Scene {
         {key:'down',frame:'front(3)'},
       ],
       frameRate:6,
-      reapet:-1
+      repeat:-1
     })
 
     this.anims.create({
@@ -48,7 +50,7 @@ class world extends Phaser.Scene {
 
       ],
       frameRate:6,
-      reapet:-1
+      repeat:-1
     })
 
     this.anims.create({
@@ -61,7 +63,7 @@ class world extends Phaser.Scene {
 
       ],
       frameRate:6,
-      reapet:-1
+      repeat:-1
     })
 
     this.anims.create({
@@ -74,7 +76,18 @@ class world extends Phaser.Scene {
 
       ],
       frameRate:6,
-      reapet:-1
+      repeat:-1
+    })
+
+    this.anims.create({
+      key:'cowAni',
+      frames:[
+        {key:'cow',frame:'cow(1)'},
+        {key:'cow',frame:'cow(2)'},
+
+      ],
+      frameRate:2,
+      repeat:-1
     })
 
     this.finishSnd = this.sound.add("finishS");
@@ -83,8 +96,6 @@ class world extends Phaser.Scene {
     let map = this.make.tilemap({key:"world"});
 
     // Step 4 Load the game tiles
-    // 1st parameter is name in Tiled,
-    // 2nd parameter is key in Preload
     let buildingTiles = map.addTilesetImage("buildingTS", "building");
     let villageTiles = map.addTilesetImage("villageTS", "village");
     let wallTiles = map.addTilesetImage("wallTS", "wall");
@@ -160,6 +171,10 @@ class world extends Phaser.Scene {
       loop: false,
 
     });
+
+    //npc
+    this.cow=this.physics.add.sprite(520,265,'cow').setScale(1).anims.play('cowAni');
+    this.cow=this.physics.add.sprite(700,100,'cow').setScale(1).anims.play('cowAni');
 
     this.cursors = this.input.keyboard.createCursorKeys();
 
@@ -239,7 +254,6 @@ class world extends Phaser.Scene {
       }
 
     }
-
 
     if (this.cursors.left.isDown) {
       this.player.body.setVelocityX(-200);
